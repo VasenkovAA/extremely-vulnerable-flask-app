@@ -4,7 +4,8 @@ These tests check basic availability and expected unauthenticated behavior.
 They do not assert that the application is secure.
 """
 import pytest
-
+import sys
+from pathlib import Path
 
 # Добавляем корень репозитория в путь поиска модулей Python.
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
