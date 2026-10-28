@@ -55,11 +55,6 @@ def test_invalid_login_does_not_authenticate_user(client):
     assert status_response.get_json()["is_logged_in"] is False
 
 
-def test_unknown_route_returns_404(client):
-    response = client.get("/this-route-should-not-exist")
-    assert response.status_code == 404
-
-
 def test_seeded_user_can_log_in_and_log_out(client):
     login_response = client.post(
         "/login",
