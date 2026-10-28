@@ -1,20 +1,21 @@
-"""Basic smoke tests for the intentionally vulnerable Flask training app.
+"""Basic smoke tests for the Flask application."""
 
-These tests check basic availability and expected unauthenticated behavior.
-They do not assert that the application is secure.
-"""
-import pytest
 import sys
 from pathlib import Path
 
-# Добавляем корень репозитория в путь поиска модулей Python.
+import pytest
+
+# pylint: disable=wrong-import-position
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from app import app  # noqa: E402
+# pylint: enable=wrong-import-position
+
 
 @pytest.fixture()
 def client():
+    """Create a Flask test client."""
     app.config.update(TESTING=True)
     with app.test_client() as test_client:
         yield test_client
