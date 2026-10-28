@@ -79,3 +79,22 @@ Either create a fresh docker container, or remove the local database (`database.
 ## Vulnerability Documentation, Exploit scripts and solutions
 
 TODO
+
+
+## Basic automated tests
+
+The repository includes a small pytest smoke-test suite. These tests verify that
+key pages respond, unauthenticated users are redirected from protected pages,
+and an invalid login does not create an authenticated session. They are not a
+security certification and do not prove that the intentionally vulnerable
+application is safe.
+
+Run locally:
+
+```bash
+python -m pip install -r requirements-dev.txt
+pytest -q
+```
+
+The tests are also run by the GitHub Actions workflow in
+`.github/workflows/tests.yml`.
